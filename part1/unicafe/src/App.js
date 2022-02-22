@@ -46,18 +46,20 @@ const Stats = ({good, neutral, bad}) => {
   }
 
   return (
-    <div>
-      <Score choice='good' choiceScore={good} />
-      <Score choice='neutral' choiceScore={neutral} />
-      <Score choice='bad' choiceScore={bad} />
-      <Score choice="total" choiceScore={good+neutral+bad} />
-      <Average good={good} neutral={neutral} bad={bad} />
-      <Positive good={good} neutral={neutral} bad={bad} />
-    </div>
+    <table>
+      <tbody>
+        <Score choice='good' choiceScore={good} />
+        <Score choice='neutral' choiceScore={neutral} />
+        <Score choice='bad' choiceScore={bad} />
+        <Score choice="total" choiceScore={good+neutral+bad} />
+        <Average good={good} neutral={neutral} bad={bad} />
+        <Positive good={good} neutral={neutral} bad={bad} />
+      </tbody>
+    </table>
   )
 }
 
-const Score = ({choice, choiceScore}) => <p>{choice + ': ' + choiceScore}</p>
+const Score = ({choice, choiceScore}) => <tr><td>{choice}</td><td>{choiceScore}</td></tr>
 
 const Average = ({good, neutral, bad}) => {
   let goodPoint = 1
@@ -66,14 +68,14 @@ const Average = ({good, neutral, bad}) => {
   let sum = good + neutral + bad
   let avg = (good * goodPoint + neutral * neutralPoint + bad * badPoint) / sum 
 
-  return <p>{'average: ' + avg}</p>
+  return <tr><td>average</td><td>{avg}</td></tr>
 }
 
 const Positive = ({good, neutral, bad}) => {
   let sum = good + neutral + bad;
   let goodRatio = good / sum * 100
 
-  return <p>{'positive: ' + goodRatio + '%'}</p>
+  return <tr><td>positive</td><td>{goodRatio + '%'}</td></tr>
 }
 
 export default App;
