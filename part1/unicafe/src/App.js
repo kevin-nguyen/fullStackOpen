@@ -7,11 +7,11 @@ const App = () => {
 
   const handleClick = (choice) => {
     return () => {
-      if (choice == 'good') {
+      if (choice === 'good') {
         setGood(good + 1)
-      } else if (choice == 'neutral') {
+      } else if (choice === 'neutral') {
         setNeutral(neutral + 1);
-      } else if (choice == 'bad') {
+      } else if (choice === 'bad') {
         setBad(bad + 1)
       }
     }
@@ -39,7 +39,12 @@ const FeedbackButton = (props) => {
 }
 
 const Stats = ({good, neutral, bad}) => {
-  
+  let sum = good + neutral + bad;
+
+  if (sum == 0) {
+    return <p>No feedback given</p>
+  }
+
   return (
     <div>
       <Score choice='good' choiceScore={good} />
