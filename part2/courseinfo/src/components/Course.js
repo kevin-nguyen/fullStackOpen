@@ -38,4 +38,4 @@ const Course = ({course}) => {
     return <p><strong>Number of exercises {totalExercise}</strong></p>;
   }
 
-  export default Course
+  export default Course;
